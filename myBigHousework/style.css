@@ -410,7 +410,7 @@ li{
 	width: 1216px;
 	height: 1552px;
 	text-align: center;
-	background-color: yellow;
+	background-color: #fff;
 }
 
 
@@ -419,7 +419,7 @@ li{
 	float: left;
 	width: 970px;
 	height: 1460px;
-	background-color: #56f370;
+	background-color: #fff;
 	
 }
 #tabbtn{
@@ -449,11 +449,13 @@ li{
 }
 
 #tabview_0{
+	margin-top: 2px;
 	width: 970px;
 	height: 1240px;
-	background-color: red;
+	background-color: blue;
 }
 #tabview_1{
+	margin-top: 2px;
 	width: 970px;
 	height: 1240px;
 	background-color: black;
@@ -464,7 +466,35 @@ li{
 	padding-top: 30px;
 	width: 300px;
 	height: 20px;
-	background-color: black;
+	/*background-color: black;*/
+}
+
+.page{
+	display: block;
+	float: left;
+	height: 20px;
+	width: 10px;
+	padding:0 6px;
+	margin: 0 4px;
+	text-decoration: none;
+	color: #000;
+}
+.page:hover{
+    background-color:#9dd8b1;
+    color:#fff;
+}
+
+.back{
+	float: left;
+	width: 30px;
+	height: 20px;
+	background: #9dd8b1 url(image/spirit.png) -263px -123px;
+}
+.ahead{
+	float: left;
+	width: 30px;
+	height: 20px;
+	background:#9dd8b1  url(image/spirit.png) -263px -143px;
 }
 /*主体右侧*/
 #right{
