@@ -39,6 +39,92 @@ function addLoadEvent(func) {
         }
     }
 }
+// 表单序列化代码
+// function serialize(form){
+//     var parts=[],
+//     field=null,
+//     i,
+//     len,
+//     j,
+//     option,
+//     optValue;
+
+//     for (i=0, len=form.elements.length; i<len; i++){
+//         field=form.elements[i];
+
+//         switch(field,type){
+//             case "select-one":
+//             case "select-multiple":
+
+//             if (field.name.length){
+//                 for(j=0, optLen=field.options.length; j<opLen; j++){
+//                     option=field.options[j];
+//                     if(option.selected){
+//                         optValue="";
+//                         if(option.hasAttribute){
+//                             optValue=(option.hasAttribute("value")?
+//                             option.value:option.text);
+//                         }else{
+//                             optValue=(option.attributes["value"].specified?
+//                                 option.value:option.text);
+//                         }
+//                         parts.push(encodeURIComponent(field.name)+"="+
+//                            encodeURIComponent(field.value));
+//                     }
+//                 }
+//             }
+//             break;
+
+//         case undefined:
+//         case "file":
+//         case "reset":
+//         case "button":
+//             break;
+//         case "radio":
+//         case"checkbox":
+//             if(!field.checked){
+//                 break;
+//             }
+
+//         default:
+//             if(field.name.length){
+//                 parts.push(encodeURIComponent(field.name)+"="+
+//                            encodeURIComponent(field.value));
+//             }
+//         }  
+//     }
+//      return parts.join("&");
+// }
+
+// 设置参数
+function serialize(data) { 
+    if (!data) return '';
+    var pairs = [];
+    for (var name in data) {
+        if (!data.hasOwnProperty(name)) continue;
+        if (typeof data[name] === 'function') continue;
+        var value = data[name].toString();
+        name = encodeURIComponent(name);
+        value = encodeURIComponent(value);
+        pairs.push(name + '=' + value);
+    }
+    return pairs.join('&');
+}
+//GET请求
+function get(url, options, callback) { //get方法
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                callback(xhr.responseText);
+            } else {
+                alert("request failed : " + xhr.status);
+            }
+        }
+    };
+    xhr.open("get", url + "?" + serialize(options), true);
+    xhr.send(null);
+}
 //不再显示提示
 //设置cookie
 function setCookie(key, value, t) {
